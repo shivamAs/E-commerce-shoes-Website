@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+<head th:replace="common/header :: common-header" />
+
+
+<body class="d-flex flex-column">
+  <div th:replace="common/header :: navbar"> </div>
+
+  <div class="container page-content">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-center py-3">
+          <i data-feather="check-circle" class="text-success" width="48" height="48"></i>
+          <h1>Thank you.</h1>
+          <p>Your order has been placed and will be processed as soon as possible.</p>
+          <p class="mb-0">
+            <span class="text-muted">Order ID: </span>
+            <span class="text-info">#ORD<span th:text="${order.id}"></span></span>
+          </p>
+          <p>
+            <span class="text-muted">Amount: </span>
+            <span class="text-info">$ <span th:text="${order.orderTotal}"></span></span>
+          </p>
+          <p>The estimated delivery date is <span th:text="${#dates.format(order.shippingDate, 'dd-MMM-yyyy')}"></span></p>
+          <a th:href="@{/store}" class="btn btn-info rounded mb-3">CONTINUE SHOPPING</a>
+          <a th:href="@{/order-detail?order=}+${order.id}" class="btn btn-primary rounded mb-3">VIEW ORDER</a>
+        </div>
+      </div>
+    </div>  
+  </div> <!-- end container -->
+  
+  <div th:replace="common/header :: footer"> </div>
+  <div th:replace="common/header :: body-scripts"> </div>
+</body>
+</html>
